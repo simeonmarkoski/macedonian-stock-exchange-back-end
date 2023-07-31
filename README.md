@@ -37,7 +37,7 @@ Before setting up the project, make sure you have the following prerequisites:
 1. Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/simeonmarkoski/stock-exchange-backend.git
+git clone https://github.com/simeonmarkoski/macedonian-stock-exchange-back-end.git
 ```
 
 2. Navigate to the project directory:
