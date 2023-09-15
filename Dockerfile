@@ -1,14 +1,13 @@
-# Use a base image with Java and a minimal Linux distribution
-FROM openjdk:11-jre-slim
-
-# Set the working directory in the container
+# Build stage
+FROM maven:3.8.4-openjdk-11 AS build
 WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package
 
-# Copy the JAR file of your Spring application into the container
-COPY target/stocks-backend-spring-0.0.1-SNAPSHOT.jar /app/
-
-# Expose the port your Spring Boot application will listen on
+# Final stage
+FROM openjdk:11-jre-slim
+WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
-
-# Define the command to run your Spring Boot application when the container starts
-CMD ["java", "-jar", "stocks-backend-spring-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "app.jar"]
