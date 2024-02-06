@@ -11,6 +11,7 @@ import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
+
 @Data
 @Entity
 @Table(name = "group_by_time_belex15_prices")
